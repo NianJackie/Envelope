@@ -1,0 +1,128 @@
+<!--index.wxml-->
+<button class='sqbtn' wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 加载中••• </button>
+<block wx:else>
+<view class="container">
+  <view class='timebox' wx:if="{{game.status == '0'}}">
+    <view>本期结束倒计时</view>
+    <view>{{time}}</view>
+  </view>
+  <view class='timebox' style="width: 280rpx;" wx:if="{{game.status == '1' && game.nextgame}}">
+    <view>本场活动已结束</view>
+    <view>下场将于{{time}}后开始</view>
+  </view>
+  <view class="ng-top">
+    <view class="ng-top-user">
+      <image mode="aspectFit" src="{{userInfo.avatarUrl}}"></image>
+      <text>{{userInfo.nickName}}</text>
+    </view>
+    <view wx:if="{{team.status != 2}}">
+      <view wx:if="{{game.snum > 0  && game.status == 0 && team.inteam == 0}}">
+        <view class="ng-top-t1" style="display: flex; text-align: left; padding: 0 40rpx;">
+          <view style="margin-right: 10rpx;">
+            <image style="width: 40rpx; height: 50rpx" src="/images/new/ht.png"></image>
+          </view>
+          <view>{{quest.quest}}</view>
+        </view>
+        <view class="ng-top-t2">
+          <view class="btn-area">
+            <button
+              wx:if="{{!audiostate}}"
+              class="btn"
+              hover-class='hover-btn'
+              bindlongpress='longtap'
+              bindtouchcancel='touchcancel'
+              bindtouchend='touchend'>
+              <text>{{hint1}}</text>
+            </button>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{game.snum > 0  && game.status == 0 && team.inteam > 0}}">
+        <view wx:if="{{game.snum > 0 && game.status == 0}}" class="ng-top-t1">
+          离成功组建队伍还差{{game.snum}}人噢
+        </view>
+        <view wx:if="{{game.snum > 0 && game.status == 0}}" class="ng-top-t2">
+          <image src="/images/new/clock.png"></image>
+          <text>目前用时{{game.time}}秒</text>
+        </view>
+      </view>
+      <view wx:if="{{game.snum == 0}}">
+        <view class="ng-top-t1">
+          “{{game.creator.nick_name}}”战队已组建完成
+        </view>
+        <view class="ng-top-t2">
+          <view class="btn-area">
+            <button
+              class="btn"
+              bindtap='toHome'>
+              <text>创建我的队伍</text>
+            </button>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{team.status == 2}}">
+      <view wx:if="{{team.rank <= 10}}">
+        <view class="ng-top-t1">
+          <view>恭喜“{{team.name}}”战队获得第{{team.rank}}名</view>
+          <view>可瓜分{{team.money}}元冲顶奖励</view>
+        </view>
+        <view wx:if="{{me.isreceiveusermoney == 1}}" class="ng-top-t2" style="font-size: 30rpx;">
+          <image src="/images/new/gift.png"></image>已领取{{team.usermoney}}元
+        </view>
+        <view bindtap="tolq" wx:if="{{me.isreceiveusermoney == 0}}" class="ng-top-t2" style="font-size: 30rpx;">
+          <image src="/images/new/gift.png"></image>去领取
+        </view>
+      </view>
+      <view wx:if="{{team.rank > 10}}">
+        <view class="ng-top-t1">
+          <view>有点小遗憾！</view>
+          <view>并没有能上排行榜</view>
+        </view>
+        <view class="ng-top-t2" style="font-size: 30rpx;">
+          <image src="/images/new/clock.png"></image>总共用时{{team.score}}秒
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="ng-content">
+    <view class="ng-content-title">
+      <text wx-if="{{game.snum > 0 && game.status == 0}}">还差{{game.snum}}人，即可挑战</text>
+      <text wx-if="{{game.snum == 0}}">战队组建完成，挑战</text>
+      <text wx-if="{{game.snum > 0 && game.status == 0}}">{{list.length}}/{{game.number}}</text>
+    </view>
+    <view class="ng-content-list">
+      <view wx:for="{{list}}" wx:key="item.id" class="ng-content-list-item">
+        <view class="ng-content-list-left">
+          <view class="ng-content-user-image">
+            <image src="{{item.head_img}}"></image>
+          </view>
+          <view class="ng-content-user-radio">
+            <view class="ng-content-user-name">
+              {{item.nick_name}}
+              <image wx:if="{{item.sex == 1}}" style="width: 30rpx; height: 30rpx;" src="/images/icon/male.png"></image>
+              <image wx:if="{{item.sex == 2}}" style="width: 30rpx; height: 30rpx;" src="/images/icon/female.png"></image>
+            </view>
+            <view bindtap="audioPlay" data-key='{{index}}' class="ng-content-user-sound audio {{index === playID ? 'on' : ''}}">
+              {{item.durat / 1000}}″
+              <image class="icon" src='{{index === playID ? "../../../images/play-icon.gif" : "../../../images/customer.png"}}'></image>
+            </view>
+          </view>
+        </view>
+        <view class="ng-content-user-hb">
+          <image bindtap='alert1' wx:if="{{team.status == 0}}" src="/images/new/hb.png"></image>
+          <image data-uid="{{item.user_id}}" bindtap="receiveyuan" wx:if="{{team.status != 0 && item.receive1yuan == 0}}" src="/images/new/hb-on.png"></image>
+          <text style="font-size: 28rpx" wx:if="{{team.status != 0 && item.receive1yuan > 0}}">参与奖1.00元</text>
+        </view>
+        <!-- <view wx:if="{{team.status == 2}}" class="ng-content-user-hb" style="font-size: 28rpx">
+          {{team.usermoney}}元
+        </view> -->
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{game.snum > 0  && game.status == 0}}" class="r-btn-area">
+    <button bindtap="toShare" class="rbtn" formType="submit" hover-class='hover-submit'>邀请好友参与</button>
+  </view>
+  <view class='mide-record {{mide ? "on" : ""}}'><view class='mide-img'></view></view>
+</view>
+</block>

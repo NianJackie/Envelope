@@ -1,0 +1,36 @@
+<!--index.wxml-->
+<button class='sqbtn' wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 加载中••• </button>
+<block wx:else>
+<view class="container">
+  <view class="t1">
+    我的记录
+  </view>
+  <view class="m1">
+    <view class="mt1">累计获得奖励</view>
+    <view class="mt2">{{amount}}<text>元</text></view>     
+    <view class="mt3" bindtap='toCharge'>
+      <image src="/images/new/out.png"></image>
+      去提现
+    </view>
+  </view>
+  <view class="t1">
+    战队记录
+  </view>
+  <view class="m2">
+    <view class="h">
+      <text class="l1">期数</text>
+      <text class="l2">战队</text>
+      <text class="l3">成绩</text>
+      <text class="l4">排名</text>
+      <text class="l5">奖励</text>
+    </view>
+    <view bindtap="toTeam" data-id="{{item.team_id}}" class="i" wx:for="{{list}}">
+      <text class="l1">{{item.game_id}}</text>
+      <text class="l2">{{item.name}}的战队</text>
+      <text class="l3">{{item.score}}''</text>
+      <text class="l4">{{item.status != 0 ? item.rank : '无'}}</text>
+      <text class="l5">{{item.usermoney}}元</text>
+    </view>
+  </view>
+</view>
+</block>

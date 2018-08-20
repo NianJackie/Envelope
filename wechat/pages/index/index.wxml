@@ -1,0 +1,52 @@
+<!--index.wxml-->
+<button class='sqbtn' wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 加载中••• </button>
+<block wx:else>
+<view class="container">
+  <view class="n-bg">
+    <view class="n-intro">
+      <view class='clear-top'></view>
+      <image class="n-slogo" mode="aspectFit" src="/images/new/slogo.png"></image>
+      <image class="n-logo" mode="aspectFit" src="/images/new/logo.png"></image>
+      <view wx:if="{{game}}" style="border-bottom: 1px dashed white;">
+        <text class="n1">{{game.title}} {{game.number}}人组队参赛，正确读出所选词条内容，用时最短的队伍，即可瓜分冲顶奖金！</text>
+        <text class="n2">组队成功就有红包奖励噢！</text>
+      </view>
+      <view wx:if="{{game === 0}}" style="display: flex; justify-content: center;">
+        <image style="width: 80%; margin-top: 40rpx;" mode="aspectFit" src="/images/new/end.png"></image>
+      </view>
+    </view>
+
+    <view class="n-ct" wx:if="{{game}}">
+      <text class="c1">请选择词条</text>
+      
+      <swiper class='swiper' 
+        indicator-dots="true" 
+        current="{{mode}}" 
+        duration="{{duration}}" 
+        previous-margin="10px"
+        next-margin="10px"
+        bindchange="bindchange">
+        <swiper-item wx:for="{{game.quests}}" class="csi">
+          <view class="csiview">
+            <text>{{item.quest}}</text>
+          </view>
+        </swiper-item>
+      </swiper>
+    
+      <view style="margin-top: 40rpx" class="btn-area">
+        <button
+          wx:if="{{!audiostate}}"
+          class="btn"
+          hover-class='hover-btn'
+          bindlongpress='longtap'
+          bindtouchcancel='touchcancel'
+          bindtouchend='touchend'>
+          <text>{{hint1}}</text>
+        </button>
+      </view>
+    </view>  
+  </view>
+  
+  <view class='mide-record {{mide ? "on" : ""}}'><view class='mide-img'></view></view>
+</view>
+</block>

@@ -1,0 +1,38 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.9.0",
+	"appid": "wx42bd88379cc4a559",
+	"projectname": "%E9%BE%99%E5%A4%B4%E8%8B%B1%E9%9B%84-xk",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "自定义",
+					"pathName": "pages/index/record/record",
+					"query": "scene = 25"
+				}
+			]
+		}
+	}
+}

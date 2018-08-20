@@ -1,0 +1,18 @@
+<!--index.wxml-->
+<button class='sqbtn' wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 加载中••• </button>
+<block wx:else>
+<view class="container">
+  <view class='t1'>
+    活动规则
+  </view>
+  <view class='ll'>
+    <view>1. 根据每期活动要求创建队伍即可参与龙头英雄之嘴强王者冲顶大赛；</view>
+    <view>2. 在活动时间内邀请规定的组队人数且成功朗读完所选的词条内容；</view>
+    <view>3. 以队伍为参赛单位，累积所有成员朗读词条的时间作为评判队伍排名的唯一标准；</view>
+    <view>4. 同一ID用户成功参与一次，组建团队后成功冲顶者即可获得1元参赛奖励，重复参与视为一次；</view>
+    <view>5. 活动截止后，排行榜前十个队伍可获得不同的名次奖励，奖金依次递减，将平分至每个成员的账号上；</view>
+    <view>6. 所获得的奖励可在“我的记录”中查看并提现；</view>
+    <view>7. 该活动最终解释权归华夏基金管理有限公司所有。</view>
+  </view>
+</view>
+</block>

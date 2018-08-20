@@ -1,0 +1,64 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+      <li><a href="{:U('Game/show', ['id' => $id])}">口令列表</a></li>
+      <li class="active"><a href="{:U('Game/teams', ['id' => $id])}">队伍列表</a></li>
+    </ul>
+    <div>
+      <if condition="$game">
+        本赛季可以结算，若结算，结算总金额为{$game.money_all}元，请谨慎操作！
+        <div>
+          <a href="{:U('Game/over', ['id' => $id])}">点击结算</a>
+        </div>
+      <else/>
+        本赛季尚未结束，无法结算
+      </if>
+    </div>
+		<form action="" method="post">
+			<table class="table table-hover table-bordered">
+				<thead>
+					<tr>
+						<th width="30">ID</th>
+						<th align="left">战队名称</th>
+            <th align="left">战队人员</th>
+            <th align="left">所用口令ID</th>
+            <th align="left">排名</th>
+            <th align="left">耗时</th>
+            <th align="left">已得赏金</th>
+            <th align="left">应得赏金</th>
+            <th align="left">状态</th>
+					</tr>
+				</thead>
+				<tbody>
+					<foreach name="teams" item="vo">
+					<tr>
+						<td>{$vo.id}</td>
+						<td>{$vo.name}</td>
+						<td>{$vo.number}</td>
+						<td>{$vo.qid}</td>
+						<td>{$vo.rank}</td>
+						<td>{$vo.score}</td>
+						<td>{$vo.money}</td>
+						<td>{$vo.ydmoney}</td>
+						<td>
+              <if condition="$vo.status == '0'" >
+                组建中
+              </if>
+              <if condition="$vo.status == '1'" >
+                组建完成
+              </if>
+              <if condition="$vo.status == '2'" >
+                已结算
+              </if>
+            </td>
+          </tr>
+					</foreach>
+				</tbody>
+			</table>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

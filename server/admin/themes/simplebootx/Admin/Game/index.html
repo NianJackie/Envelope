@@ -1,0 +1,69 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('Game/index')}">赛期列表</a></li>
+    </ul>
+    <div>
+      <a href="{:U('Game/game_add')}">添加赛期</a>
+    </div>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>赛期名称</th>
+					<th>队伍人数</th>
+					<th>开始时间</th>
+					<th>结束时间</th>
+					<th>状态</th>
+					<th>第一名赏金</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<foreach name="games" item="vo">
+				<tr>
+					<td class="gameid">{$vo.id}</td>
+					<td>{$vo.title}</td>
+					<td>{$vo.number}</td>
+					<td>{$vo.begin_time}</td>
+					<td>{$vo.end_time}</td>
+					<td>
+						<if condition="$vo.status == '1'" >
+              <font style="color:red">结束</font>
+            </if>
+						<if condition="$vo.status == '0'">
+              <font style="color:#45a1de">可用</font>
+            </if>
+					</td>
+					<td>{$vo.money}</td>
+					<td>
+						<a href="{:U('Game/show', array('id'=>$vo['id']))}" class="btn btn-sm btn-info">查看</a>
+            <a href="{:U('Game/game_add', array('id' => $vo['id']))}" class="btn-edit btn btn-sm btn-info">编辑</a>
+            <!-- <button class="btn-over btn btn-sm btn-info">结算</button> -->
+					</td>
+				</tr>
+				</foreach>
+			</tbody>
+		</table>
+		<div class="pagination">{$page}</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script>
+		$('.img-show').on('click',function(){
+		   var img_src = $(this).attr('attr-img');
+		   console.log(img_src);
+            //页面层-自定义
+            layer.open({
+                type: 1,
+                title: false,
+                closeBtn: 0,
+                shadeClose: true,
+                skin: 'yourclass',
+                content: '<img src="'+img_src+'"/>'
+            });
+		})
+	</script>
+</body>
+</html>

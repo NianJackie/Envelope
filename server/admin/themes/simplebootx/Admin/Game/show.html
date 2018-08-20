@@ -1,0 +1,40 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('Game/show', ['id' => $id])}">口令列表</a></li>
+			<li><a href="{:U('Game/teams', ['id' => $id])}">队伍列表</a></li>
+    </ul>
+    <div>
+      <a href="{:U('Game/quest_add')}">添加口令</a>
+    </div>
+		<form action="" method="post">
+			<table class="table table-hover table-bordered">
+				<thead>
+					<tr>
+						<th width="30">ID</th>
+						<th align="left">口令中文</th>
+						<th align="left">口令拼音</th>
+						<th width="120">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<foreach name="items" item="vo">
+					<tr>
+						<td>{$vo.id}</td>
+						<td>{$vo.quest}</td>
+						<td>{$vo.quest_py}</td>
+						<td>
+              <a href="{:U('Game/quest_add',array('id'=>$vo['id']))}">编辑口令</a>
+              <a href="{:U('Game/quest_delete',array('id'=>$vo['id']))}">删除口令</a>
+            </td>
+          </tr>
+					</foreach>
+				</tbody>
+			</table>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

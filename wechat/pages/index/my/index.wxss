@@ -1,0 +1,95 @@
+/**index.wxss**/
+.t1 {
+  text-align: center;
+  color: #999;
+  font-size: 36rpx;
+  padding: 20rpx;
+  background: #ffffff;
+}
+
+.m1 {
+  background: #f4f4f4;
+  font-size: 30rpx;
+  color: #999999;
+  text-align: center;
+  padding: 30rpx;
+}
+
+.mt2 {
+  font-size: 160rpx;
+  color: #cc2f40;
+}
+
+.mt2 text {
+  font-size: 36rpx;
+  color: #999999;
+}
+
+.mt3 {
+  font-size: 24rpx;
+  color: #cc2f40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mt3 image {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.m2 {
+  font-size: 30rpx;
+}
+
+.m2 .h {
+  border-top: 1rpx solid #d6d5d6;
+  border-bottom: 1rpx solid #d6d5d6;
+  color: #999;
+  padding: 20rpx;
+  background: #fdfcfd;
+}
+
+.m2 .l1 {
+  display: inline-block;
+  width: 100rpx;
+  vertical-align: middle;
+}
+
+.m2 .l2 {
+  display: inline-block;
+  width: 300rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.m2 .l3 {
+  display: inline-block;
+  width: 120rpx;
+  vertical-align: middle;
+}
+
+.m2 .l4 {
+  display: inline-block;
+  width: 100rpx;
+  vertical-align: middle;
+}
+
+.m2 .l5 {
+  display: inline-block;
+  width: 80rpx;
+  vertical-align: middle;
+}
+
+.m2 .i {
+  padding: 20rpx;
+  color: #333333;
+  background: white;
+  border-bottom: 1rpx solid #e8e8e8;
+}
+
+.m2 .i .l1 {
+  color: #c0c0c0;
+}

@@ -1,0 +1,59 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/index/my/index",
+    "pages/index/game/index",
+    "pages/index/share/share",
+    "pages/index/record/record",
+    "pages/index/nindex",
+    "pages/index/rank/index",
+    "pages/index/rule/index",
+    "pages/recordDetails/recordDetails",
+    "pages/squareHome/squareHome",
+    "pages/userCenter/userCenter",
+    "pages/share/share",
+    "pages/balance/balance",
+    "pages/report/report",
+    "pages/help/help",
+    "pages/record/record",
+    "pages/logs/logs"
+  ],
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#cc2f40",
+    "borderStyle": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/icon/t1.png",
+        "selectedIconPath": "images/icon/t1-on.png"
+      },
+      {
+        "pagePath": "pages/index/my/index",
+        "text": "我的记录",
+        "iconPath": "images/icon/t2.png",
+        "selectedIconPath": "images/icon/t2-on.png"
+      },
+      {
+        "pagePath": "pages/index/rank/index",
+        "text": "排行榜",
+        "iconPath": "images/icon/t3.png",
+        "selectedIconPath": "images/icon/t3-on.png"
+      },
+      {
+        "pagePath": "pages/index/rule/index",
+        "text": "活动规则",
+        "iconPath": "images/icon/t4.png",
+        "selectedIconPath": "images/icon/t4-on.png"
+      }
+    ]
+  },
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#cc2f40",
+    "navigationBarTitleText": "龙头英雄",
+    "navigationBarTextStyle":"white"
+  }
+
+}

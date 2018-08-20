@@ -1,0 +1,23 @@
+<!--share.wxml-->
+<view class="container">
+    <image style="position: absolute; bottom: 20rpx; left: 50%; margin-left: -90rpx; width: 180rpx; height: 90rpx;" mode="aspectFit" src="/images/new/slogo.png"></image>
+    <view class="box" wx:if="{{hasUserInfo}}">
+      <view class='upper'>
+        <view class='front'>
+          <view class='avatar'>
+            <image class='ownerimg' src='{{ownerImg}}'></image>
+          </view>
+          <view class='redtips'><text>{{ownerName}}</text><image src='../../../images/redtips.png'></image></view>
+          <view style="font-size: 32rpx" class='describe'>邀您参加“嘴”强王者瓜分现金大奖</view>
+        </view>
+      </view>
+      <view class='lower'>
+        <view class='ewm'><view class='ewmImg'><image src='{{xcxewm}}'></image></view></view>
+        <view class='operation' style="background: white; border-radis: 10rpx;">
+          <view class='btn'><button class='retransmission' open-type="share">转发到群聊</button></view>
+          <view class='btn'><button class='generate' bindtap='sheng'>生成朋友圈分享图</button></view>
+          <view class='mytry' bindtap='mytry'>{{"← 返回"}}</view>
+        </view>
+      </view>
+    </view>
+</view>

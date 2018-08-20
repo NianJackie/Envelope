@@ -1,0 +1,38 @@
+<admintpl file="header"/>
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<form class="form-horizontal js-ajax-form" action="{:U('Game/quest_add')}" method="post">
+			<fieldset>
+        <input type="hidden" name="id" value="{$item.id}" id="id"/>
+        <div class="control-group">
+					<label class="control-label">口令中文</label>
+					<div class="controls">
+						<input type="text" name="quest" value="{$item.quest}" id="quest"/>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">口令英文</label>
+					<div class="controls">
+            <input type="text" name="quest_py" value="{$item.quest_py}" id="quest_py"/>
+            <span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">所属赛期ID</label>
+					<div class="controls">
+            <input type="text" name="game_id" value="{$item.game_id}" id="game_id"/>
+            <span class="form-required">*</span>
+          </div>
+				</div>
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">提交</button>
+				<a class="btn" href="javascript:history.back(-1);">返回</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

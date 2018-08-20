@@ -1,0 +1,31 @@
+<!--index.wxml-->
+<button class='sqbtn' wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 加载中••• </button>
+<block wx:else>
+<view class="container">
+  <view class='t1'>
+    排行榜
+  </view>
+  <view class='m2'>
+    <view class="h">
+      <text class="l1">排名</text>
+      <text class="l2">战队</text>
+      <text class="l3">成绩</text>
+    </view>
+    <view bindtap='toTeam' data-id="{{item.team_id}}" class="i" wx:for="{{list}}">
+      <view class="l1">
+        <image wx:if="{{index == 0}}" src="/images/new/rank1.png"></image>
+        <image wx:if="{{index == 1}}" src="/images/new/rank2.png"></image>
+        <image wx:if="{{index == 2}}"src="/images/new/rank3.png"></image>
+        <text wx:if="{{index > 2}}">{{index+1}}</text>
+      </view>
+      <view class="l2">
+        {{item.name}}的战队
+        <view wx:for="{{item.users}}" wx:for-item="i" class='ul'>
+          <image src="{{i.head_img}}"></image>
+        </view>
+      </view>
+      <view class="l3">{{item.score}}''</view>
+    </view>
+  </view>
+</view>
+</block>

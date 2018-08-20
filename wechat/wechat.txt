@@ -1,0 +1,5 @@
+微信端接口配置只有一个地方，在wechat根目录：
+
+后台接口配置：
+    /app.js
+        setConfig: { url: 'https://longtou.upcircle.cn' }
